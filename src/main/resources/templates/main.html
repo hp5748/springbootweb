@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>主页测试</title>
+    <script type="text/javascript" src="/static/lib/js/angular.min.js"></script>
+<!--    <script type="text/javascript" src="/lib/js/angular.min.js"></script>-->
+</head>
+<!--<script type="text/javascript" src="/js-action/mainController.js" ></script>-->
+<script type="text/javascript" src="/static/js-action/mainController.js" ></script>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+   <h1>我是主页</h1>
+    <h2>{{data.name}}</h2>
+    <input type="text" ng-model="data.name">
+</div>
+
+</body>
+</html>

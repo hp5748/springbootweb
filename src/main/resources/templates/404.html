@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误信息</title>
+    <script src="/static/lib/js/angular.min.js"></script>
+</head>
+<body ng-app="errApp">
+<div ng-controller="errCtrl">
+    <label>404</label><br>
+    <input type="text" ng-model="data.name">
+    {{data.name}}
+</div>
+<script>
+    let ap=angular.module('errApp',[]);
+    ap.controller('errCtrl',['$scope',function ($scope) {
+        $scope.data={'name':'和平'};
+        alert(angular.toJson($scope.data));
+
+    }]);
+</script>
+</body>
+
+</html>
