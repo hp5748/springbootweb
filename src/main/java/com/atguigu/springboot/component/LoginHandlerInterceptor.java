@@ -5,7 +5,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/*登录拦截器*/
 @Component
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
@@ -18,7 +18,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
             System.out.println("没有权限请先登录!");
             return false;
         }else {
-            System.out.println("成功!");
+           // System.out.println("成功!");
             return true;
         }
     }

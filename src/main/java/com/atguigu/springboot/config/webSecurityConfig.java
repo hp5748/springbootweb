@@ -1,6 +1,7 @@
 package com.atguigu.springboot.config;
 
 import com.atguigu.springboot.component.LoginHandlerInterceptor;
+import com.atguigu.springboot.component.SecurityInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.*;
@@ -24,7 +25,13 @@ public class webSecurityConfig extends WebMvcConfigurationSupport {
 //注册拦截器
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
+        //登录拦截
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/","/Login","/logout","/static/**");
+        //权限拦截
+        registry.addInterceptor(new SecurityInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/","/Login","/logout","/static/**");
     }
+
+
 }

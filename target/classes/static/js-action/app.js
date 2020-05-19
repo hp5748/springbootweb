@@ -6,5 +6,8 @@ actionApp.config(['$routeProvider',function ($routeProvider) {
     }).when('/directive',{
         controller:'View2Controller',
         templateUrl:'/static/views/view2.html',
+    }).when('/process',{
+        controller:'View3Controller',
+        templateUrl:'/static/views/view3.html',
     });
 }]);

@@ -9,7 +9,8 @@ actionApp.controller('View1Controller',['$rootScope','$scope','$http',function($
         let personName=$scope.personName;
         $http.get('search',{params:{personName:personName}}).success(
             function (data) {
-                $scope.person=data;
+               // $scope.person=data;
+                alert("ok!");
             }
         );
     };
@@ -19,5 +20,10 @@ actionApp.controller('View1Controller',['$rootScope','$scope','$http',function($
 actionApp.controller('View2Controller',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
     $scope.$on('$viewContentLoaded',function () {
         console.log('页面2加载完成！');
+    });
+}]);
+actionApp.controller('View3Controller',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
+    $scope.$on('$viewContentLoaded',function () {
+        console.log('页面3加载完成！');
     });
 }]);

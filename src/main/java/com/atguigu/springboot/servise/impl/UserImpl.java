@@ -14,18 +14,10 @@ public class UserImpl implements UserService {
     @Autowired
     UserMapper mapper;
 
-//    @Override
-//    public User selectUser(int puid) {
-//        return mapper.selectUser(puid);
-//    }
-
     @Override
     public User selectUser(String account) {
+
         return mapper.selectUser(account);
     }
 
-//    @Override
-//    public List<User> selectAll() {
-//        return null;
-//    }
 }
