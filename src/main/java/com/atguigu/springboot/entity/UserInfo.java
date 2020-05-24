@@ -1,9 +1,6 @@
 package com.atguigu.springboot.entity;
 
-import lombok.Data;
-import org.springframework.context.annotation.Bean;
-
-public class User {
+public class UserInfo{
 
     private int puid;
     private String user_name;
@@ -12,6 +9,9 @@ public class User {
     private String effective;
     private int group_id;
     private int role_id;
+    private UserRole userRole;
+    private UserGroup userGroup;
+    private RoleAuthority roleAuthority;
 
     public int getPuid() {
         return puid;
@@ -69,9 +69,33 @@ public class User {
         this.role_id = role_id;
     }
 
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public UserGroup getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
+    }
+
+    public RoleAuthority getRoleAuthority() {
+        return roleAuthority;
+    }
+
+    public void setRoleAuthority(RoleAuthority roleAuthority) {
+        this.roleAuthority = roleAuthority;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "UserInfo{" +
                 "puid=" + puid +
                 ", user_name='" + user_name + '\'' +
                 ", account='" + account + '\'' +
@@ -79,6 +103,9 @@ public class User {
                 ", effective='" + effective + '\'' +
                 ", group_id=" + group_id +
                 ", role_id=" + role_id +
+                ", userRole=" + userRole +
+                ", userGroup=" + userGroup +
+                ", roleAuthority=" + roleAuthority +
                 '}';
     }
 }

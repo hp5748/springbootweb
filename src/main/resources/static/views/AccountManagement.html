@@ -1,0 +1,42 @@
+<div class="container" id="users">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>昵称</td>
+                    <td>账户</td>
+                    <td>密码</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(k,v) in person">
+                    <td>{{v.user_name}}</td>
+                    <td>{{v.account}}</td>
+                    <td>{{v.password}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  ng-click="modifyUser(v)">编辑</button></td>
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">账户编辑</h4>
+                                </div>
+                                <div class="modal-body">{{account.roleAuthority.function_flag}}</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary">提交更改</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

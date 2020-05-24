@@ -1,17 +1,17 @@
 package com.atguigu.springboot.entity;
 
 public class RoleAuthority {
-    private String puid;
+    private int puid;
     private String function_flag;
     private int role_id;
     private String description;
     private String effective;
 
-    public String getPuid() {
+    public int getPuid() {
         return puid;
     }
 
-    public void setPuid(String puid) {
+    public void setPuid(int puid) {
         this.puid = puid;
     }
 

@@ -9,5 +9,8 @@ actionApp.config(['$routeProvider',function ($routeProvider) {
     }).when('/process',{
         controller:'View3Controller',
         templateUrl:'/static/views/view3.html',
+    }).when('/AccMa',{
+        controller:'AccMaController',
+        templateUrl:'/static/views/AccountManagement.html',
     });
 }]);

@@ -1,6 +1,8 @@
 package com.atguigu.springboot;
 
 import com.atguigu.springboot.entity.RoleAuthority;
+import com.atguigu.springboot.entity.User;
+import com.atguigu.springboot.entity.UserInfo;
 import com.atguigu.springboot.servise.RoleAuthorityService;
 import com.atguigu.springboot.servise.UserService;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,7 @@ import java.util.List;
 @ComponentScan("com.atguigu.springboot")
 class SpringBoot04WebRestfulcrudApplicationTests {
     Logger logger = LoggerFactory.getLogger(getClass());
+
     @Test
     void contextLoads() {
         System.out.println("sss");
@@ -24,25 +27,36 @@ class SpringBoot04WebRestfulcrudApplicationTests {
 
     @Autowired
     private UserService userService;
+
     @Test
-    void selectTest(){
-       // System.out.println(userService.selectUser("admin").toString());
-     for(int i=0;i<10000;i++)
-     {
-         logger.trace("这是入职",i);
-         logger.debug("debug",i);
-         logger.info("info",i);
-         logger.error("ss",i);
-     }
+    void selectTest() {
+        // System.out.println(userService.selectUser("admin").toString());
+        for (int i = 0; i < 10000; i++) {
+            logger.trace("这是入职", i);
+            logger.debug("debug", i);
+            logger.info("info", i);
+            logger.error("ss", i);
+        }
     }
+
     @Autowired
     private RoleAuthorityService roleAuthorityService;
 
     @Test
-    void selectRoleAuthority()
-    {
-        List<RoleAuthority> permissionSet=roleAuthorityService.selectUserAuthority(3);
+    void selectRoleAuthority() {
+        List<RoleAuthority> permissionSet = roleAuthorityService.selectUserAuthority(3);
         System.out.println(permissionSet);
+
+    }
+
+    @Test
+    void getAllUsers() {
+
+        List<UserInfo> users=userService.getAllUsers();
+
+        users.forEach(user -> {
+            System.out.println(user);
+        });
 
     }
 

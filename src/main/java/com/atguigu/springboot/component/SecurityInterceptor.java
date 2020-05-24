@@ -25,9 +25,6 @@ import java.util.List;
 @Component
 public class SecurityInterceptor implements HandlerInterceptor {
 
-//    @Resource
-//    private RoleAuthorityService roleAuthorityService;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //
@@ -60,26 +57,35 @@ public class SecurityInterceptor implements HandlerInterceptor {
                 //这里写一个获取权限，看下是否包含权限内容
                 System.out.println("进入注解判断");
 
+                //普通类获取session
                 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
                 Object role_id = request.getSession().getAttribute("role_id");
-                System.out.println("roleId:" + role_id.toString());
+
+               // System.out.println("roleId:" + role_id.toString());
                 int id = Integer.parseInt(role_id.toString());
                 System.out.println("id:" + id);
+
+                //利用ApplicationContextAware接口写服务工具类调用service，防止注入失败
                 RoleAuthorityService roleAuthorityService = (RoleAuthorityService) Application.getBean("RoleAuthorityService");
 
                 List<RoleAuthority> permissionSet = roleAuthorityService.selectUserAuthority(id);
                 System.out.println(permissionSet);
                 //然后返回true或false
-                if (permissionSet == null) {
-                    System.out.println("false");
-                    //没有被限制权限
+                if (permissionSet == null||permissionSet.size()==0) {
+                    System.out.println("管理员权限");
+                    //没有被限制权限,说明是管理员
                     return true;
                 }
                 boolean is_canNext = false;
                 for (RoleAuthority str : permissionSet) {
+                    //不为空则说明有权限判断，若满足权限则可以下行，不满足则拦截
                     System.out.println("getFunction_flag:" + str.getFunction_flag());
                     System.out.println("requiredPermission:" + requiredPermission.value());
-                    if (str.getFunction_flag().equals(requiredPermission.value())) {
+//                    if (str.getFunction_flag().equals(requiredPermission.value())) {
+//                        System.out.println("result:" + requiredPermission.value());
+//                        is_canNext = true;
+//                    }
+                    if (requiredPermission.value().contains(str.getFunction_flag())) {
                         System.out.println("result:" + requiredPermission.value());
                         is_canNext = true;
                     }
